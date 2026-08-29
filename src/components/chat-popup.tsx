@@ -7,7 +7,9 @@ import { useTrip } from "@/context/trip-context";
 import { destinations } from "@/data/destinations";
 import { bi } from "@/i18n";
 import { ListingPhoto } from "@/components/listing-photo";
+import { MapsLink } from "@/components/maps-link";
 import type { Attraction, Bus, ChatPayload, Hotel } from "@/lib/types";
+import { googleMapsDirectionsUrl, googleMapsPlaceUrl } from "@/lib/maps";
 
 const STARTERS = [
   { key: "starterBagan" as const, textEn: "Bagan 3 days by bus from Yangon", textMy: "Bagan ၃ ရက်၊ ရန်ကုန်က ဘတ်စ်နဲ့သွားမယ်" },
@@ -234,6 +236,16 @@ function AttractionCard({ item, locale }: { item: Attraction; locale: "en" | "my
       <p className="text-sm text-muted">
         {item.city} · {item.durationHours} {t("hours")}
       </p>
+      <div className="mt-2">
+        <MapsLink
+          className="w-full"
+          href={googleMapsPlaceUrl({
+            query: `${bi(locale, item.name)} ${item.city}`,
+            lat: item.lat,
+            lng: item.lng,
+          })}
+        />
+      </div>
       <button
         type="button"
         onClick={() => trip.addAttraction(item)}
@@ -258,6 +270,16 @@ function HotelCard({ item, locale }: { item: Hotel; locale: "en" | "my" }) {
       <p className="text-sm">
         {t("typicalPrice")} {formatMmk(item.priceMmkMin)}–{formatMmk(item.priceMmkMax)} {t("mmk")}
       </p>
+      <div className="mt-2">
+        <MapsLink
+          className="w-full"
+          href={googleMapsPlaceUrl({
+            query: `${bi(locale, item.name)} ${bi(locale, item.area)} ${item.city}`,
+            lat: item.lat,
+            lng: item.lng,
+          })}
+        />
+      </div>
       <button
         type="button"
         onClick={() => trip.addHotel(item)}
@@ -288,6 +310,9 @@ function BusCard({ item, locale }: { item: Bus; locale: "en" | "my" }) {
         {item.operator} · {formatMmk(item.fareMmk)} {t("mmk")}
       </p>
       <p className="text-sm">{bi(locale, item.departWindow)}</p>
+      <div className="mt-2">
+        <MapsLink className="w-full" href={googleMapsDirectionsUrl(item.from.en, item.to.en)} />
+      </div>
       <button
         type="button"
         onClick={() => trip.addBus(item)}

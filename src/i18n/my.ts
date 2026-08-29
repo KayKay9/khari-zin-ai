@@ -42,6 +42,7 @@ const my: Record<MessageKey, string> = {
   language: "EN",
   languageMy: "မြန်မာ",
   focusMap: "မြေပုံမှာကြည့်",
+  viewOnMaps: "Google မြေပုံ",
   duration: "ကြာချိန်",
   operator: "ကုမ္ပဏီ",
   depart: "ထွက်ချိန်",

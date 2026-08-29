@@ -1,15 +1,51 @@
 "use client";
 
 import { ListingPhoto } from "@/components/listing-photo";
+import { MapsLink } from "@/components/maps-link";
 import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
 import { destinations } from "@/data/destinations";
 import { bi } from "@/i18n";
+import { googleMapsDirectionsUrl, googleMapsPlaceUrl } from "@/lib/maps";
 import { estimateDaySchedule, formatClock } from "@/lib/timeline";
 import type { Attraction } from "@/lib/types";
 
 function formatMmk(value: number) {
   return value.toLocaleString();
+}
+
+function MapIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z" />
+      <path d="M9 4v13.5" />
+      <path d="M15 6.5V20" />
+    </svg>
+  );
+}
+
+function FocusMapButton({ id }: { id: string }) {
+  const { t } = useLocale();
+  const trip = useTrip();
+  return (
+    <button
+      type="button"
+      onClick={() => trip.setFocusId(id)}
+      aria-label={t("focusMap")}
+      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full bg-maroon text-ivory"
+    >
+      <MapIcon />
+    </button>
+  );
 }
 
 function TrashIcon() {
@@ -54,13 +90,21 @@ export function ItineraryPanel() {
             <p className="text-sm text-ink">
               {origin ? bi(locale, origin.name) : "—"} → {dest ? bi(locale, dest.name) : "—"}
             </p>
-            <button
-              type="button"
-              onClick={() => trip.resetRoute()}
-              className="min-h-11 shrink-0 rounded-full px-3 text-sm text-maroon ring-1 ring-maroon/20"
-            >
-              {t("changeRoute")}
-            </button>
+            <div className="flex shrink-0 items-center gap-1">
+              {origin && dest ? (
+                <MapsLink
+                  compact
+                  href={googleMapsDirectionsUrl(origin.name.en, dest.name.en)}
+                />
+              ) : null}
+              <button
+                type="button"
+                onClick={() => trip.resetRoute()}
+                className="min-h-11 shrink-0 rounded-full px-3 text-sm text-maroon ring-1 ring-maroon/20"
+              >
+                {t("changeRoute")}
+              </button>
+            </div>
           </div>
         ) : (
           <p className="text-xs text-muted">{t("typicalPrice")}</p>
@@ -96,33 +140,40 @@ export function ItineraryPanel() {
                     <div className="relative z-10 flex w-3 shrink-0 justify-center pt-2">
                       <span className="h-2.5 w-2.5 rounded-full bg-maroon ring-2 ring-ivory" aria-hidden />
                     </div>
-                    <div className="flex min-w-0 flex-1 items-stretch gap-1 overflow-hidden rounded-2xl bg-sand ring-1 ring-maroon/10">
-                      <button
-                        type="button"
-                        onClick={() => trip.setFocusId(stop.item.id)}
-                        className="flex min-h-11 min-w-0 flex-1 items-center gap-2 p-1.5 text-left"
-                      >
+                    <div className="min-w-0 flex-1 overflow-hidden rounded-2xl bg-sand ring-1 ring-maroon/10">
+                      <div className="flex items-start gap-2 p-2">
                         <ListingPhoto
                           src={stop.item.imageUrl}
                           alt={bi(locale, stop.item.name)}
                           kind="attraction"
                           variant="thumb"
                         />
-                        <span className="min-w-0">
-                          <span className="block font-medium leading-snug">{bi(locale, stop.item.name)}</span>
-                          <span className="block text-sm text-muted">
+                        <div className="min-w-0 flex-1">
+                          <p className="font-medium leading-snug">{bi(locale, stop.item.name)}</p>
+                          <p className="text-sm text-muted">
                             {stop.item.city} · {stop.item.durationHours} {t("hours")}
-                          </span>
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => trip.removeAttraction(stop.item.id)}
-                        aria-label={t("remove")}
-                        className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center self-center rounded-full text-maroon ring-1 ring-maroon/20"
-                      >
-                        <TrashIcon />
-                      </button>
+                          </p>
+                          <div className="mt-1.5 flex flex-wrap items-center gap-1">
+                            <FocusMapButton id={stop.item.id} />
+                            <MapsLink
+                              compact
+                              href={googleMapsPlaceUrl({
+                                query: `${bi(locale, stop.item.name)} ${stop.item.city}`,
+                                lat: stop.item.lat,
+                                lng: stop.item.lng,
+                              })}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => trip.removeAttraction(stop.item.id)}
+                              aria-label={t("remove")}
+                              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
+                            >
+                              <TrashIcon />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -141,34 +192,43 @@ export function ItineraryPanel() {
             <ul className="space-y-2">
               {trip.hotels.map((item) => (
                 <li key={item.id} className="overflow-hidden rounded-2xl bg-sand ring-1 ring-maroon/10">
-                  <ListingPhoto src={item.imageUrl} alt={bi(locale, item.name)} kind="hotel" />
-                  <div className="p-2 pt-0">
-                    <button type="button" className="w-full text-left" onClick={() => trip.setFocusId(item.id)}>
-                      <p className="font-medium">{bi(locale, item.name)}</p>
+                  <div className="flex items-start gap-2 p-2">
+                    <ListingPhoto src={item.imageUrl} alt={bi(locale, item.name)} kind="hotel" variant="thumb" />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium leading-snug">{bi(locale, item.name)}</p>
                       <p className="text-sm text-muted">{bi(locale, item.area)}</p>
                       <p className="text-sm">
                         {t("typicalPrice")} {formatMmk(item.priceMmkMin)}–{formatMmk(item.priceMmkMax)} {t("mmk")}
                       </p>
-                    </button>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {item.phone ? (
-                        <a
-                          href={`tel:${item.phone}`}
-                          className="inline-flex min-h-11 items-center rounded-full bg-maroon px-4 text-ivory"
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1">
+                        {item.lat != null && item.lng != null ? <FocusMapButton id={item.id} /> : null}
+                        {item.phone ? (
+                          <a
+                            href={`tel:${item.phone}`}
+                            className="inline-flex min-h-11 items-center rounded-full bg-maroon px-4 text-sm text-ivory"
+                          >
+                            {t("call")}
+                          </a>
+                        ) : (
+                          <p className="self-center text-sm text-muted">{t("noPhone")}</p>
+                        )}
+                        <MapsLink
+                          compact
+                          href={googleMapsPlaceUrl({
+                            query: `${bi(locale, item.name)} ${bi(locale, item.area)} ${item.city}`,
+                            lat: item.lat,
+                            lng: item.lng,
+                          })}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => trip.removeHotel(item.id)}
+                          aria-label={t("remove")}
+                          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
                         >
-                          {t("call")}
-                        </a>
-                      ) : (
-                        <p className="self-center text-sm text-muted">{t("noPhone")}</p>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => trip.removeHotel(item.id)}
-                        aria-label={t("remove")}
-                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
-                      >
-                        <TrashIcon />
-                      </button>
+                          <TrashIcon />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -183,14 +243,15 @@ export function ItineraryPanel() {
             <ul className="space-y-2">
               {trip.buses.map((item) => (
                 <li key={item.id} className="overflow-hidden rounded-2xl bg-sand ring-1 ring-maroon/10">
-                  <ListingPhoto
-                    src={item.imageUrl}
-                    alt={`${bi(locale, item.from)} ${bi(locale, item.to)}`}
-                    kind="bus"
-                  />
-                  <div className="flex items-stretch gap-1 p-2 pt-0">
-                    <div className="min-w-0 flex-1 px-2">
-                      <p className="font-medium">
+                  <div className="flex items-start gap-2 p-2">
+                    <ListingPhoto
+                      src={item.imageUrl}
+                      alt={`${bi(locale, item.from)} ${bi(locale, item.to)}`}
+                      kind="bus"
+                      variant="thumb"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium leading-snug">
                         {bi(locale, item.from)} → {bi(locale, item.to)}
                       </p>
                       <p className="text-sm text-muted">
@@ -199,15 +260,18 @@ export function ItineraryPanel() {
                       <p className="text-sm">
                         {t("typicalPrice")} {formatMmk(item.fareMmk)} {t("mmk")}
                       </p>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1">
+                        <MapsLink compact href={googleMapsDirectionsUrl(item.from.en, item.to.en)} />
+                        <button
+                          type="button"
+                          onClick={() => trip.removeBus(item.id)}
+                          aria-label={t("remove")}
+                          className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
+                        >
+                          <TrashIcon />
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => trip.removeBus(item.id)}
-                      aria-label={t("remove")}
-                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center self-start rounded-full text-maroon ring-1 ring-maroon/20"
-                    >
-                      <TrashIcon />
-                    </button>
                   </div>
                 </li>
               ))}

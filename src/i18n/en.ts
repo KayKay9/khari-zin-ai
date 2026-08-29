@@ -40,6 +40,7 @@ const en = {
   language: "EN",
   languageMy: "မြန်မာ",
   focusMap: "Show on map",
+  viewOnMaps: "Google Maps",
   duration: "Duration",
   operator: "Operator",
   depart: "Depart",

@@ -12,14 +12,16 @@ export function ListingPhoto({
   src?: string;
   alt: string;
   kind: PhotoKind;
-  variant?: "wide" | "thumb";
+  variant?: "wide" | "thumb" | "popup";
 }) {
   const [failed, setFailed] = useState(false);
   const url = !src || failed ? placeholderPhoto(kind) : src;
   const frame =
     variant === "thumb"
       ? "relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-sand"
-      : "relative mb-2 aspect-[16/10] w-full overflow-hidden rounded-xl bg-sand";
+      : variant === "popup"
+        ? "relative h-[128px] w-full overflow-hidden bg-sand"
+        : "relative mb-2 aspect-[16/10] w-full overflow-hidden rounded-xl bg-sand";
 
   return (
     <div className={frame}>

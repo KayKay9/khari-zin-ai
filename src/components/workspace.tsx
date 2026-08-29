@@ -58,6 +58,7 @@ export function Workspace() {
 
       <Header />
 
+      {/* City chips overlay (Yangon, Mandalay, Bagan, …)
       <div className="pointer-events-none absolute inset-x-0 top-20 z-20 hidden md:block">
         <CityChips
           visible={chipsVisible}
@@ -85,6 +86,7 @@ export function Workspace() {
           </p>
         ) : null}
       </div>
+      */}
 
       <div className="pointer-events-none absolute bottom-4 left-3 top-20 z-20 hidden md:flex">
         {chatOpen ? (
