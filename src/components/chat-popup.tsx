@@ -184,7 +184,14 @@ function ResultCards({ payload }: { payload: ChatPayload }) {
       {payload.itinerary && payload.itinerary.length > 0 ? (
         <button
           type="button"
-          onClick={() => trip.applyItinerary(payload.itinerary ?? [], payload.attractions)}
+          onClick={() =>
+            trip.applyItinerary(
+              payload.itinerary ?? [],
+              payload.attractions,
+              payload.hotels,
+              payload.buses,
+            )
+          }
           className="min-h-11 w-full rounded-full bg-maroon text-ivory"
         >
           {t("applyRoute")}

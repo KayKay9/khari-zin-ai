@@ -26,7 +26,12 @@ type TripContextValue = {
   removeHotel: (id: string) => void;
   addBus: (item: Bus) => void;
   removeBus: (id: string) => void;
-  applyItinerary: (days: ItineraryDay[], catalog: Attraction[]) => void;
+  applyItinerary: (
+    days: ItineraryDay[],
+    catalog: Attraction[],
+    nextHotels?: Hotel[],
+    nextBuses?: Bus[],
+  ) => void;
   setOriginSlug: (slug: string | null) => void;
   setDestinationSlug: (slug: string | null) => void;
   resetRoute: () => void;
@@ -119,20 +124,29 @@ export function TripProvider({ children }: { children: ReactNode }) {
     setBuses((prev) => prev.filter((row) => row.id !== id));
   }, []);
 
-  const applyItinerary = useCallback((days: ItineraryDay[], catalog: Attraction[]) => {
-    const byId = new Map(catalog.map((item) => [item.id, item]));
-    const ordered: Attraction[] = [];
-    for (const day of [...days].sort((a, b) => a.day - b.day)) {
-      for (const id of day.attractionIds) {
-        const found = byId.get(id);
-        if (found) ordered.push({ ...found, day: day.day });
+  const applyItinerary = useCallback(
+    (days: ItineraryDay[], catalog: Attraction[], nextHotels: Hotel[] = [], nextBuses: Bus[] = []) => {
+      const byId = new Map(catalog.map((item) => [item.id, item]));
+      const ordered: Attraction[] = [];
+      for (const day of [...days].sort((a, b) => a.day - b.day)) {
+        for (const id of day.attractionIds) {
+          const found = byId.get(id);
+          if (found && !ordered.some((row) => row.id === found.id)) {
+            ordered.push({ ...found, day: day.day });
+          }
+        }
       }
-    }
-    setAttractions((prev) => {
-      const leftover = prev.filter((item) => !ordered.some((row) => row.id === item.id));
-      return [...ordered, ...leftover];
-    });
-  }, []);
+      const nextAttractions =
+        ordered.length > 0
+          ? ordered
+          : catalog.map((item) => ({ ...item, day: item.day && item.day > 0 ? item.day : 1 }));
+      setAttractions(nextAttractions);
+      setHotels(nextHotels);
+      setBuses(nextBuses);
+      setFocusId(null);
+    },
+    [],
+  );
 
   const resetRoute = useCallback(() => {
     setOriginSlug(null);

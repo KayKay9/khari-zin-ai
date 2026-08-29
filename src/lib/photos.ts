@@ -3,6 +3,8 @@ import type { ChatPayload } from "@/lib/types";
 
 export type PhotoKind = "attraction" | "hotel" | "bus";
 
+const UA = "MyanmarTripPlanner/1.0 (educational MVP)";
+
 const PLACEHOLDERS: Record<PhotoKind, string> = {
   attraction: PHOTO.bagan,
   hotel: PHOTO.hotel,
@@ -32,26 +34,69 @@ export function placeholderPhoto(kind: PhotoKind) {
   return PLACEHOLDERS[kind];
 }
 
+function uniqueQueries(...parts: Array<string | undefined>) {
+  const queries: string[] = [];
+  for (const part of parts) {
+    const text = part?.trim();
+    if (!text) continue;
+    queries.push(text);
+    if (!/myanmar|burma/i.test(text)) queries.push(`${text} Myanmar`);
+  }
+  return [...new Set(queries)];
+}
+
+function httpsUrl(value?: string) {
+  if (!value || !/^https:\/\//i.test(value)) return null;
+  return value;
+}
+
+async function openversePhoto(query: string): Promise<string | null> {
+  try {
+    const url = `https://api.openverse.org/v1/images/?${new URLSearchParams({
+      q: query,
+      page_size: "5",
+    })}`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": UA, Accept: "application/json" },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      results?: Array<{ url?: string; thumbnail?: string }>;
+    };
+    for (const hit of data.results ?? []) {
+      const src = httpsUrl(hit.url) ?? httpsUrl(hit.thumbnail);
+      if (src) return src;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 async function wikiThumbnail(query: string): Promise<string | null> {
   const title = query.trim().replace(/\s+/g, "_");
   if (!title) return null;
   try {
     const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
     const res = await fetch(url, {
-      headers: { "User-Agent": "MyanmarTripPlanner/1.0 (educational MVP)" },
+      headers: { "User-Agent": UA },
       signal: AbortSignal.timeout(2500),
     });
     if (!res.ok) return null;
-    const data = (await res.json()) as { thumbnail?: { source?: string } };
-    return data.thumbnail?.source ?? null;
+    const data = (await res.json()) as { thumbnail?: { source?: string }; type?: string };
+    if (data.type === "disambiguation") return null;
+    return httpsUrl(data.thumbnail?.source);
   } catch {
     return null;
   }
 }
 
-export async function resolvePhoto(query: string | undefined, kind: PhotoKind): Promise<string> {
-  if (query) {
-    const wiki = await wikiThumbnail(query);
+export async function resolvePhoto(query: string | undefined, kind: PhotoKind, extra?: string): Promise<string> {
+  for (const term of uniqueQueries(query, extra)) {
+    const openverse = await openversePhoto(term);
+    if (openverse) return openverse;
+    const wiki = await wikiThumbnail(term);
     if (wiki) return wiki;
   }
   return placeholderPhoto(kind);
@@ -66,16 +111,18 @@ async function withPhoto<T extends { id: string; photoQuery?: string; imageUrl?:
   const demo = DEMO_IMAGES[item.id];
   if (demo) return { ...item, imageUrl: demo, photoQuery: item.photoQuery };
   const query = item.photoQuery || fallbackQuery;
-  const imageUrl = await resolvePhoto(query, kind);
+  const imageUrl = await resolvePhoto(query, kind, fallbackQuery);
   return { ...item, imageUrl, photoQuery: query };
 }
 
 export async function attachListingPhotos(payload: ChatPayload): Promise<ChatPayload> {
   const [attractions, hotels, buses] = await Promise.all([
     Promise.all(
-      payload.attractions.map((item) => withPhoto(item, "attraction", item.name.en)),
+      payload.attractions.map((item) => withPhoto(item, "attraction", `${item.name.en} ${item.city}`)),
     ),
-    Promise.all(payload.hotels.map((item) => withPhoto(item, "hotel", item.name.en))),
+    Promise.all(
+      payload.hotels.map((item) => withPhoto(item, "hotel", `${item.name.en} ${item.city} hotel`)),
+    ),
     Promise.all(
       payload.buses.map((item) =>
         withPhoto(item, "bus", `${item.operator} ${item.from.en} ${item.to.en} bus Myanmar`),

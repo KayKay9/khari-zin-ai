@@ -62,7 +62,7 @@ Only suggest real, well-known places inside Myanmar.
 Prices and bus times are TYPICAL ranges in MMK, not live tickets.
 Include usable map coordinates (lat/lng).
 ${routeLine}
-Each attraction, hotel, and bus MUST include photoQuery: a short English phrase to find a real photo (place name, or "OPERATOR night bus Myanmar").
+Each attraction, hotel, and bus MUST include photoQuery: the exact English place name plus Myanmar (e.g. "Ngwe Saung Beach Myanmar", "Shwedagon Pagoda Yangon"). Never a generic word like "beach" or "temple" alone.
 Match the user's language preference: ${input.locale}.
 User message: ${input.message}
 Current trip JSON: ${JSON.stringify(compactTrip(input.trip))}
