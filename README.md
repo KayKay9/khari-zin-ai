@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# မြန်မာ ခရီး · Myanmar Trip
 
-## Getting Started
+A bilingual (မြန်မာ / English) travel planner for trips **inside Myanmar**. Chat for places, hotels, and buses; keep a day-by-day itinerary; see it on a map. Built for locals — no accounts and no payments.
 
-First, run the development server:
+The UI uses a Pagoda dusk palette (maroon, gold, sand) with Noto Sans Myanmar and Geist.
+
+## What it does
+
+- **Chat** — Ask in Myanmar or English (for example, Yangon → Bagan by bus). Suggestions come from Gemini when a key is available.
+- **Itinerary** — Add attractions, hotels, and buses. Attractions group into a day timeline with estimated clock times (09:00 start, duration plus a 30-minute transfer).
+- **Map** — Leaflet map with numbered pins, hotel markers, a route line, and an info window (photo + duration or typical price). **Show on map** flies to that pin. **Google Maps** opens a name search or transit directions in a new tab.
+- **Hotels** — Typical MMK range and `tel:` call when a number is listed. Nothing is booked in-app.
+- **Language** — Toggle မြန်မာ / EN. Trip data stays in the browser (`localStorage`).
+
+Supported demo cities: Yangon, Mandalay, Bagan, Inle Lake, Hpa-An.
+
+## Stack
+
+- Next.js 16.3, React 19, Tailwind CSS 4
+- `@google/genai` for structured chat JSON
+- Leaflet + react-leaflet for the map
+- Unsplash (and Wikimedia when photos resolve) for listing images
+
+## Setup
+
+```bash
+npm install
+cp .env.example .env.local
+```
+
+In `.env.local`:
+
+```
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-3.5-flash-lite
+```
+
+`GEMINI_API_KEY` is optional. Without it, or if Gemini is blocked for your region / model, chat falls back to sample listings and shows a demo notice.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How chat works
 
-## Learn More
+`POST /api/chat` sends the message, locale, and current trip snapshot. Gemini returns bilingual copy plus attractions, hotels, buses, and an optional day itinerary. Photos are attached from Wikipedia thumbnails when possible, otherwise placeholders.
 
-To learn more about Next.js, take a look at the following resources:
+If the response is unusable, the API returns demo data from `src/data/demo.ts` (`errorKind`: `no_key`, `location`, `model`, or `unavailable`). Successful replies are cached in memory for repeat questions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | Role |
+|------|------|
+| `src/app/page.tsx` | Map workspace shell |
+| `src/app/api/chat/route.ts` | Chat API |
+| `src/components/workspace.tsx` | Chat + itinerary + map layout |
+| `src/components/itinerary-panel.tsx` | Day timeline and trip items |
+| `src/components/trip-map.tsx` | Leaflet map and pin popups |
+| `src/context/` | Locale, trip, and chat state |
+| `src/data/` | Destinations, demo catalog, image URLs |
+| `src/i18n/` | English and Myanmar strings |
 
-## Deploy on Vercel
+Trip state is stored as `myanmar-trip-v2` in `localStorage`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Out of scope
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live booking, payments, user accounts, and Google Maps as the base map (external links only).

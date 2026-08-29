@@ -239,11 +239,7 @@ function AttractionCard({ item, locale }: { item: Attraction; locale: "en" | "my
       <div className="mt-2">
         <MapsLink
           className="w-full"
-          href={googleMapsPlaceUrl({
-            query: `${bi(locale, item.name)} ${item.city}`,
-            lat: item.lat,
-            lng: item.lng,
-          })}
+          href={googleMapsPlaceUrl(`${item.name.en}, ${item.city}`)}
         />
       </div>
       <button
@@ -273,11 +269,7 @@ function HotelCard({ item, locale }: { item: Hotel; locale: "en" | "my" }) {
       <div className="mt-2">
         <MapsLink
           className="w-full"
-          href={googleMapsPlaceUrl({
-            query: `${bi(locale, item.name)} ${bi(locale, item.area)} ${item.city}`,
-            lat: item.lat,
-            lng: item.lng,
-          })}
+          href={googleMapsPlaceUrl(`${item.name.en}, ${item.area.en}, ${item.city}`)}
         />
       </div>
       <button

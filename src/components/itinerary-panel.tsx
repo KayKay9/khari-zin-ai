@@ -157,11 +157,7 @@ export function ItineraryPanel() {
                             <FocusMapButton id={stop.item.id} />
                             <MapsLink
                               compact
-                              href={googleMapsPlaceUrl({
-                                query: `${bi(locale, stop.item.name)} ${stop.item.city}`,
-                                lat: stop.item.lat,
-                                lng: stop.item.lng,
-                              })}
+                              href={googleMapsPlaceUrl(`${stop.item.name.en}, ${stop.item.city}`)}
                             />
                             <button
                               type="button"
@@ -214,11 +210,7 @@ export function ItineraryPanel() {
                         )}
                         <MapsLink
                           compact
-                          href={googleMapsPlaceUrl({
-                            query: `${bi(locale, item.name)} ${bi(locale, item.area)} ${item.city}`,
-                            lat: item.lat,
-                            lng: item.lng,
-                          })}
+                          href={googleMapsPlaceUrl(`${item.name.en}, ${item.area.en}, ${item.city}`)}
                         />
                         <button
                           type="button"
