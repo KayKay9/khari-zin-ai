@@ -84,17 +84,29 @@ body {
 }
 
 .trip-popup a.leaflet-popup-close-button {
-  width: 28px;
-  height: 28px;
-  line-height: 26px;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--maroon) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
   top: 8px;
   right: 8px;
-  background: rgba(255, 251, 244, 0.92);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1 !important;
+  text-align: center;
+  text-decoration: none;
+  color: var(--maroon) !important;
+  background: #ffffff !important;
   border-radius: 999px;
-  z-index: 1;
+  box-shadow: 0 1px 4px rgba(28, 20, 16, 0.28);
+  z-index: 1000;
+}
+
+.trip-popup a.leaflet-popup-close-button:hover {
+  color: var(--ink) !important;
+  background: #ffffff !important;
 }
 
 .trip-popup .leaflet-popup-content img {
