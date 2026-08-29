@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sand: #f6efe4;
+  --maroon: #7a1f2b;
+  --gold: #c9a227;
+  --ivory: #fffbf4;
+  --ink: #1c1410;
+  --muted: #6b5b4f;
+  --background: var(--sand);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-sand: var(--sand);
+  --color-maroon: var(--maroon);
+  --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-myanmar), var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-latin: var(--font-geist-sans), ui-sans-serif, system-ui;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: #dce6d2;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255, 251, 244, 0.85) !important;
+}
+
+.leaflet-bottom.leaflet-right {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
 }
