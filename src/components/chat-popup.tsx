@@ -6,6 +6,7 @@ import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
 import { destinations } from "@/data/destinations";
 import { bi } from "@/i18n";
+import { ListingPhoto } from "@/components/listing-photo";
 import type { Attraction, Bus, ChatPayload, Hotel } from "@/lib/types";
 
 const STARTERS = [
@@ -83,7 +84,14 @@ export function ChatPopup({
             {msg.payload?.demo ? (
               <div className="flex items-center justify-between gap-2 rounded-xl bg-gold/20 px-3 py-2 text-sm">
                 <span>
-                  <strong>{t("demoBanner")}</strong> · {t("demoHint")}
+                  <strong>{t("demoBanner")}</strong> ·{" "}
+                  {msg.payload.errorKind === "location"
+                    ? t("demoHintLocation")
+                    : msg.payload.errorKind === "no_key"
+                      ? t("demoHintNoKey")
+                      : msg.payload.errorKind === "model"
+                        ? t("demoHintModel")
+                        : t("demoHint")}
                 </span>
                 {lastUser ? (
                   <button
@@ -221,6 +229,7 @@ function AttractionCard({ item, locale }: { item: Attraction; locale: "en" | "my
   const added = trip.hasItem(item.id);
   return (
     <article className="w-56 shrink-0 rounded-2xl bg-ivory p-3 ring-1 ring-maroon/10">
+      <ListingPhoto src={item.imageUrl} alt={bi(locale, item.name)} kind="attraction" />
       <p className="font-semibold leading-snug">{bi(locale, item.name)}</p>
       <p className="text-sm text-muted">
         {item.city} · {item.durationHours} {t("hours")}
@@ -243,6 +252,7 @@ function HotelCard({ item, locale }: { item: Hotel; locale: "en" | "my" }) {
   const added = trip.hasItem(item.id);
   return (
     <article className="w-56 shrink-0 rounded-2xl bg-ivory p-3 ring-1 ring-maroon/10">
+      <ListingPhoto src={item.imageUrl} alt={bi(locale, item.name)} kind="hotel" />
       <p className="font-semibold leading-snug">{bi(locale, item.name)}</p>
       <p className="text-sm text-muted">{bi(locale, item.area)}</p>
       <p className="text-sm">
@@ -266,6 +276,11 @@ function BusCard({ item, locale }: { item: Bus; locale: "en" | "my" }) {
   const added = trip.hasItem(item.id);
   return (
     <article className="w-56 shrink-0 rounded-2xl bg-ivory p-3 ring-1 ring-maroon/10">
+      <ListingPhoto
+        src={item.imageUrl}
+        alt={`${bi(locale, item.from)} ${bi(locale, item.to)}`}
+        kind="bus"
+      />
       <p className="font-semibold leading-snug">
         {bi(locale, item.from)} → {bi(locale, item.to)}
       </p>

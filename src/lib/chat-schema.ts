@@ -27,8 +27,9 @@ export const chatResponseSchema = {
           lat: { type: Type.NUMBER },
           lng: { type: Type.NUMBER },
           day: { type: Type.NUMBER },
+          photoQuery: { type: Type.STRING },
         },
-        required: ["id", "name", "city", "category", "durationHours", "tips", "lat", "lng"],
+        required: ["id", "name", "city", "category", "durationHours", "tips", "lat", "lng", "photoQuery"],
       },
     },
     hotels: {
@@ -46,8 +47,9 @@ export const chatResponseSchema = {
           notes: bilingual,
           lat: { type: Type.NUMBER },
           lng: { type: Type.NUMBER },
+          photoQuery: { type: Type.STRING },
         },
-        required: ["id", "name", "city", "area", "priceMmkMin", "priceMmkMax", "notes"],
+        required: ["id", "name", "city", "area", "priceMmkMin", "priceMmkMax", "notes", "photoQuery"],
       },
     },
     buses: {
@@ -63,8 +65,9 @@ export const chatResponseSchema = {
           fareMmk: { type: Type.NUMBER },
           departWindow: bilingual,
           notes: bilingual,
+          photoQuery: { type: Type.STRING },
         },
-        required: ["id", "from", "to", "operator", "durationHours", "fareMmk", "departWindow"],
+        required: ["id", "from", "to", "operator", "durationHours", "fareMmk", "departWindow", "photoQuery"],
       },
     },
     itinerary: {

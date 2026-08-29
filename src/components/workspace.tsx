@@ -9,21 +9,45 @@ import { TripMapDynamic } from "@/components/trip-map-dynamic";
 import { useChat } from "@/context/chat-context";
 import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
+import { destinations } from "@/data/destinations";
 
 export function Workspace() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const { send } = useChat();
-  const { attractions, hotels, buses } = useTrip();
-  const started = attractions.length + hotels.length + buses.length > 0;
+  const trip = useTrip();
   const [chatOpen, setChatOpen] = useState(true);
   const [mobileTab, setMobileTab] = useState<"chat" | "trip">("chat");
-  const [chipsVisible, setChipsVisible] = useState(true);
+  const [sameCityHint, setSameCityHint] = useState(false);
 
-  function pickCity(prompt: string) {
-    setChipsVisible(false);
+  const pickingOrigin = !trip.originSlug;
+  const chipsVisible = !trip.originSlug || !trip.destinationSlug;
+
+  function planFromSlugs(originSlug: string, destinationSlug: string) {
+    const origin = destinations.find((item) => item.slug === originSlug);
+    const dest = destinations.find((item) => item.slug === destinationSlug);
+    if (!origin || !dest) return;
+    const message =
+      locale === "my"
+        ? `စတင်: ${origin.name.my}။ သွားမည့်နေရာ: ${dest.name.my}။ ဘတ်စ်နဲ့ခရီးစဉ် စီစဉ်ပေးပါ။`
+        : `Start: ${origin.name.en}. Destination: ${dest.name.en}. Plan a trip by bus.`;
+    void send(message);
+  }
+
+  function pickCity(slug: string) {
     setChatOpen(true);
     setMobileTab("chat");
-    void send(prompt);
+    if (!trip.originSlug) {
+      trip.setOriginSlug(slug);
+      setSameCityHint(false);
+      return;
+    }
+    if (slug === trip.originSlug) {
+      setSameCityHint(true);
+      return;
+    }
+    setSameCityHint(false);
+    trip.setDestinationSlug(slug);
+    planFromSlugs(trip.originSlug, slug);
   }
 
   return (
@@ -35,20 +59,36 @@ export function Workspace() {
       <Header />
 
       <div className="pointer-events-none absolute inset-x-0 top-20 z-20 hidden md:block">
-        <CityChips visible={chipsVisible && !started} onPick={pickCity} />
+        <CityChips
+          visible={chipsVisible}
+          title={pickingOrigin ? t("askOrigin") : t("askDestination")}
+          excludeSlug={trip.originSlug}
+          onPick={pickCity}
+        />
+        {sameCityHint ? (
+          <p className="pointer-events-auto mt-2 text-center text-sm font-medium text-ivory drop-shadow">
+            {t("sameCityHint")}
+          </p>
+        ) : null}
       </div>
 
       <div className="pointer-events-none absolute bottom-20 left-1/2 z-20 w-full max-w-lg -translate-x-1/2 md:hidden">
-        <CityChips visible={chipsVisible && !started} onPick={pickCity} />
+        <CityChips
+          visible={chipsVisible}
+          title={pickingOrigin ? t("askOrigin") : t("askDestination")}
+          excludeSlug={trip.originSlug}
+          onPick={pickCity}
+        />
+        {sameCityHint ? (
+          <p className="pointer-events-auto mt-2 text-center text-sm font-medium text-ivory drop-shadow">
+            {t("sameCityHint")}
+          </p>
+        ) : null}
       </div>
 
       <div className="pointer-events-none absolute bottom-4 left-3 top-20 z-20 hidden md:flex">
         {chatOpen ? (
-          <ChatPopup
-            open
-            onClose={() => setChatOpen(false)}
-            onConversationStart={() => setChipsVisible(false)}
-          />
+          <ChatPopup open onClose={() => setChatOpen(false)} />
         ) : (
           <button
             type="button"
@@ -67,12 +107,7 @@ export function Workspace() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 md:hidden">
         <div className="pointer-events-auto mx-3 mb-3 max-h-[52vh] overflow-hidden rounded-[20px] shadow-xl">
           {mobileTab === "chat" ? (
-            <ChatPopup
-              open
-              onClose={() => setChatOpen(false)}
-              onConversationStart={() => setChipsVisible(false)}
-              showMinimize={false}
-            />
+            <ChatPopup open onClose={() => setChatOpen(false)} showMinimize={false} />
           ) : (
             <ItineraryPanel />
           )}

@@ -59,6 +59,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
             message,
             locale,
             trip: trip.snapshot,
+            originSlug: trip.originSlug,
+            destinationSlug: trip.destinationSlug,
             retry,
           }),
         });
@@ -73,7 +75,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
           },
         ]);
       } catch {
-        const fallback = demoPayloadForMessage(message);
+        const fallback = demoPayloadForMessage(message, trip.originSlug, trip.destinationSlug);
         setMessages((prev) => [
           ...prev,
           {
@@ -88,7 +90,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         setLoading(false);
       }
     },
-    [locale, trip.snapshot],
+    [locale, trip.snapshot, trip.originSlug, trip.destinationSlug],
   );
 
   return (

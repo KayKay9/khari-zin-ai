@@ -1,3 +1,4 @@
+import { PHOTO } from "@/data/image-urls";
 import type { DestinationChip } from "@/lib/types";
 
 export const destinations: DestinationChip[] = [
@@ -6,8 +7,7 @@ export const destinations: DestinationChip[] = [
     name: { en: "Yangon", my: "ရန်ကုန်" },
     lat: 16.8409,
     lng: 96.1735,
-    image:
-      "https://images.unsplash.com/photo-1580834341580-8c71aa4ff2d0?w=800&q=80",
+    image: PHOTO.yangon,
     prompt: {
       en: "Plan 2 days in Yangon for pagodas and food.",
       my: "ရန်ကုန် ၂ ရက်၊ စေတီနဲ့ စားသောက်ဖို့ စီစဉ်ပေးပါ။",
@@ -18,8 +18,7 @@ export const destinations: DestinationChip[] = [
     name: { en: "Mandalay", my: "မန္တလေး" },
     lat: 21.9588,
     lng: 96.0891,
-    image:
-      "https://images.unsplash.com/photo-1596422846543-75c6fd206dc0?w=800&q=80",
+    image: PHOTO.mandalay,
     prompt: {
       en: "Mandalay 2 days including U Bein and the palace.",
       my: "မန္တလေး ၂ ရက်၊ ဦးပိန်နဲ့ နန်းတော် ထည့်ပေးပါ။",
@@ -30,8 +29,7 @@ export const destinations: DestinationChip[] = [
     name: { en: "Bagan", my: "ပုဂံ" },
     lat: 21.1717,
     lng: 94.8585,
-    image:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80",
+    image: PHOTO.bagan,
     prompt: {
       en: "Bagan 3 days by bus from Yangon.",
       my: "Bagan ၃ ရက်၊ ရန်ကုန်က ဘတ်စ်နဲ့သွားမယ်။",
@@ -42,8 +40,7 @@ export const destinations: DestinationChip[] = [
     name: { en: "Inle Lake", my: "အင်းလေး" },
     lat: 20.586,
     lng: 96.91,
-    image:
-      "https://images.unsplash.com/photo-1528183429752-ae38f3ef2d0e?w=800&q=80",
+    image: PHOTO.inle,
     prompt: {
       en: "Inle Lake 2 days, hotels in Nyaungshwe.",
       my: "အင်းလေး ၂ ရက်၊ ညောင်ရွှေမှာ ဟိုတယ်ရှာပေးပါ။",
@@ -54,8 +51,7 @@ export const destinations: DestinationChip[] = [
     name: { en: "Hpa-An", my: "ဘားအံ" },
     lat: 16.8906,
     lng: 97.6333,
-    image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    image: PHOTO.hpaAn,
     prompt: {
       en: "Hpa-An caves and Mount Zwegabin weekend trip.",
       my: "ဘားအံ ဂူတွေနဲ့ ဇွဲကပင်တောင် စနေတနင်္ဂနွေခရီး။",

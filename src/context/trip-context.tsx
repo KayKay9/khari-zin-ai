@@ -11,12 +11,14 @@ import {
 } from "react";
 import type { Attraction, Bus, Hotel, ItineraryDay, TripSnapshot } from "@/lib/types";
 
-const STORAGE_KEY = "myanmar-trip-v1";
+const STORAGE_KEY = "myanmar-trip-v2";
 
 type TripContextValue = {
   attractions: Attraction[];
   hotels: Hotel[];
   buses: Bus[];
+  originSlug: string | null;
+  destinationSlug: string | null;
   focusId: string | null;
   addAttraction: (item: Attraction) => void;
   removeAttraction: (id: string) => void;
@@ -25,6 +27,9 @@ type TripContextValue = {
   addBus: (item: Bus) => void;
   removeBus: (id: string) => void;
   applyItinerary: (days: ItineraryDay[], catalog: Attraction[]) => void;
+  setOriginSlug: (slug: string | null) => void;
+  setDestinationSlug: (slug: string | null) => void;
+  resetRoute: () => void;
   setFocusId: (id: string | null) => void;
   hasItem: (id: string) => boolean;
   snapshot: TripSnapshot;
@@ -32,21 +37,28 @@ type TripContextValue = {
 
 const TripContext = createContext<TripContextValue | null>(null);
 
-function loadTrip(): Pick<TripContextValue, "attractions" | "hotels" | "buses"> {
-  if (typeof window === "undefined") {
-    return { attractions: [], hotels: [], buses: [] };
-  }
+function emptyTrip(): Pick<
+  TripContextValue,
+  "attractions" | "hotels" | "buses" | "originSlug" | "destinationSlug"
+> {
+  return { attractions: [], hotels: [], buses: [], originSlug: null, destinationSlug: null };
+}
+
+function loadTrip(): ReturnType<typeof emptyTrip> {
+  if (typeof window === "undefined") return emptyTrip();
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { attractions: [], hotels: [], buses: [] };
+    if (!raw) return emptyTrip();
     const parsed = JSON.parse(raw) as TripSnapshot;
     return {
       attractions: parsed.attractions ?? [],
       hotels: parsed.hotels ?? [],
       buses: parsed.buses ?? [],
+      originSlug: parsed.originSlug ?? null,
+      destinationSlug: parsed.destinationSlug ?? null,
     };
   } catch {
-    return { attractions: [], hotels: [], buses: [] };
+    return emptyTrip();
   }
 }
 
@@ -54,6 +66,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
   const [attractions, setAttractions] = useState<Attraction[]>([]);
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [buses, setBuses] = useState<Bus[]>([]);
+  const [originSlug, setOriginSlug] = useState<string | null>(null);
+  const [destinationSlug, setDestinationSlug] = useState<string | null>(null);
   const [focusId, setFocusId] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
@@ -62,6 +76,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
     setAttractions(loaded.attractions);
     setHotels(loaded.hotels);
     setBuses(loaded.buses);
+    setOriginSlug(loaded.originSlug);
+    setDestinationSlug(loaded.destinationSlug);
     setHydrated(true);
   }, []);
 
@@ -69,9 +85,15 @@ export function TripProvider({ children }: { children: ReactNode }) {
     if (!hydrated) return;
     window.localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ attractions, hotels, buses } satisfies TripSnapshot),
+      JSON.stringify({
+        attractions,
+        hotels,
+        buses,
+        originSlug,
+        destinationSlug,
+      } satisfies TripSnapshot),
     );
-  }, [attractions, hotels, buses, hydrated]);
+  }, [attractions, hotels, buses, originSlug, destinationSlug, hydrated]);
 
   const addAttraction = useCallback((item: Attraction) => {
     setAttractions((prev) => (prev.some((row) => row.id === item.id) ? prev : [...prev, item]));
@@ -112,6 +134,11 @@ export function TripProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const resetRoute = useCallback(() => {
+    setOriginSlug(null);
+    setDestinationSlug(null);
+  }, []);
+
   const hasItem = useCallback(
     (id: string) =>
       attractions.some((item) => item.id === id) ||
@@ -121,8 +148,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
   );
 
   const snapshot = useMemo(
-    () => ({ attractions, hotels, buses }),
-    [attractions, hotels, buses],
+    () => ({ attractions, hotels, buses, originSlug, destinationSlug }),
+    [attractions, hotels, buses, originSlug, destinationSlug],
   );
 
   const value = useMemo(
@@ -130,6 +157,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
       attractions,
       hotels,
       buses,
+      originSlug,
+      destinationSlug,
       focusId,
       addAttraction,
       removeAttraction,
@@ -138,6 +167,9 @@ export function TripProvider({ children }: { children: ReactNode }) {
       addBus,
       removeBus,
       applyItinerary,
+      setOriginSlug,
+      setDestinationSlug,
+      resetRoute,
       setFocusId,
       hasItem,
       snapshot,
@@ -146,6 +178,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
       attractions,
       hotels,
       buses,
+      originSlug,
+      destinationSlug,
       focusId,
       addAttraction,
       removeAttraction,
@@ -154,6 +188,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
       addBus,
       removeBus,
       applyItinerary,
+      resetRoute,
       hasItem,
       snapshot,
     ],

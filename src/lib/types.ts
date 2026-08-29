@@ -15,6 +15,8 @@ export type Attraction = {
   lat: number;
   lng: number;
   day?: number;
+  photoQuery?: string;
+  imageUrl?: string;
 };
 
 export type Hotel = {
@@ -28,6 +30,8 @@ export type Hotel = {
   notes: Bilingual;
   lat?: number;
   lng?: number;
+  photoQuery?: string;
+  imageUrl?: string;
 };
 
 export type Bus = {
@@ -39,6 +43,8 @@ export type Bus = {
   fareMmk: number;
   departWindow: Bilingual;
   notes?: Bilingual;
+  photoQuery?: string;
+  imageUrl?: string;
 };
 
 export type ItineraryDay = {
@@ -53,12 +59,15 @@ export type ChatPayload = {
   buses: Bus[];
   itinerary?: ItineraryDay[];
   demo?: boolean;
+  errorKind?: "no_key" | "location" | "model" | "unavailable";
 };
 
 export type TripSnapshot = {
   attractions: Attraction[];
   hotels: Hotel[];
   buses: Bus[];
+  originSlug?: string | null;
+  destinationSlug?: string | null;
 };
 
 export type DestinationChip = {

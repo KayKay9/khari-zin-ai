@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap, ZoomControl } from "react-leaflet";
+import { destinations } from "@/data/destinations";
 import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
 import { bi } from "@/i18n";
@@ -22,10 +23,12 @@ function pinIcon(label: string, gold = false) {
 
 function FitBounds() {
   const map = useMap();
-  const { attractions, hotels, focusId } = useTrip();
+  const { attractions, hotels, focusId, originSlug } = useTrip();
+  const origin = destinations.find((item) => item.slug === originSlug);
 
   useEffect(() => {
     const points: [number, number][] = [
+      ...(origin ? [[origin.lat, origin.lng] as [number, number]] : []),
       ...attractions.map((item) => [item.lat, item.lng] as [number, number]),
       ...hotels
         .filter((item) => item.lat != null && item.lng != null)
@@ -40,7 +43,7 @@ function FitBounds() {
       return;
     }
     map.fitBounds(points, { padding: [80, 80], maxZoom: 12 });
-  }, [attractions, hotels, map]);
+  }, [attractions, hotels, origin, map]);
 
   useEffect(() => {
     if (!focusId) return;
@@ -58,8 +61,12 @@ function FitBounds() {
 
 export default function TripMap() {
   const { locale } = useLocale();
-  const { attractions, hotels } = useTrip();
-  const line = attractions.map((item) => [item.lat, item.lng] as [number, number]);
+  const { attractions, hotels, originSlug } = useTrip();
+  const origin = destinations.find((item) => item.slug === originSlug);
+  const line = [
+    ...(origin ? [[origin.lat, origin.lng] as [number, number]] : []),
+    ...attractions.map((item) => [item.lat, item.lng] as [number, number]),
+  ];
 
   return (
     <MapContainer
@@ -77,6 +84,13 @@ export default function TripMap() {
       <FitBounds />
       {line.length > 1 ? (
         <Polyline positions={line} pathOptions={{ color: "#7A1F2B", weight: 3, opacity: 0.85 }} />
+      ) : null}
+      {origin ? (
+        <Marker position={[origin.lat, origin.lng]} icon={pinIcon("စ", true)}>
+          <Popup>
+            <strong>{bi(locale, origin.name)}</strong>
+          </Popup>
+        </Marker>
       ) : null}
       {attractions.map((item, index) => (
         <Marker key={item.id} position={[item.lat, item.lng]} icon={pinIcon(String(index + 1))}>
