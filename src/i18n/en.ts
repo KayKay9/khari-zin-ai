@@ -1,5 +1,5 @@
 const en = {
-  appName: "Myanmar Trip",
+  appName: "Khayi Zin AI",
   tagline: "Where you start, and where you go",
   chat: "Chat",
   trip: "Trip",

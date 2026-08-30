@@ -1,4 +1,4 @@
-# မြန်မာ ခရီး · Myanmar Trip
+# Khayi Zin AI (ခရီးစဥ် AI)
 
 A bilingual (မြန်မာ / English) travel planner for trips **inside Myanmar**. Chat for places, hotels, and buses; keep a day-by-day itinerary; see it on a map. Built for locals — no accounts and no payments.
 

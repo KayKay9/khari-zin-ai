@@ -21,6 +21,24 @@ function formatMmk(value: number) {
   return value.toLocaleString();
 }
 
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M6 6l12 12" />
+      <path d="M18 6L6 18" />
+    </svg>
+  );
+}
+
 export function ChatPopup({
   open,
   onClose,
@@ -60,9 +78,10 @@ export function ChatPopup({
           <button
             type="button"
             onClick={onClose}
-            className="min-h-11 rounded-full px-3 text-sm text-muted hover:bg-sand"
+            aria-label={t("minimizeChat")}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-muted hover:bg-sand"
           >
-            {t("minimizeChat")}
+            <CloseIcon />
           </button>
         ) : null}
       </div>

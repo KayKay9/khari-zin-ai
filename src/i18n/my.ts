@@ -1,7 +1,7 @@
 import type { MessageKey } from "./en";
 
 const my: Record<MessageKey, string> = {
-  appName: "မြန်မာ ခရီး",
+  appName: "ခရီးစဥ် AI",
   tagline: "ဘယ်ကထွက်မလဲ၊ ဘယ်ကိုသွားမလဲ",
   chat: "စကားပြော",
   trip: "ခရီး",
