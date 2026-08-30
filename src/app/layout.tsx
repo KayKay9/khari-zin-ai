@@ -15,7 +15,7 @@ const notoMyanmar = Noto_Sans_Myanmar({
 });
 
 export const metadata: Metadata = {
-  title: "မြန်မာ ခရီး · Myanmar Trip",
+  title: "Khayi Zin AI (ခရီးစဥ် AI) __ AI-Powered Vacation & Local Travel Planner",
   description:
     "Ask where you want to go in Myanmar. Get attractions, hotels, and buses on a map.",
 };
