@@ -29,6 +29,8 @@ const my: Record<MessageKey, string> = {
   attractions: "နေရာများ",
   hotels: "ဟိုတယ်",
   buses: "ဘတ်စ်",
+  flights: "လေယာဉ်",
+  viewSource: "ရင်းမြစ်",
   emptyTrip: "ချတ်မှာ မေးပြီး နေရာ၊ ဟိုတယ်၊ ဘတ်စ် ထည့်ပါ။",
   emptyChat: "ထွက်မည့်မြို့ ရွေးပါ၊ ပြီးရင် သွားမည့်မြို့ — သို့မဟုတ် နှစ်ခုလုံး ရိုက်ပါ။",
   searching: "နေရာရှာနေသည်…",

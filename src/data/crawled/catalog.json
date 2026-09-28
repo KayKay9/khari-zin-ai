@@ -1,0 +1,1069 @@
+{
+  "crawledAt": "2026-09-28T14:45:03.998Z",
+  "cities": {
+    "yangon": {
+      "attractions": [
+        {
+          "id": "airfares-place-yangon-contemplate-the-beauty-of-shwedagon-pagoda",
+          "name": {
+            "en": "Contemplate the beauty of Shwedagon Pagoda",
+            "my": "Contemplate the beauty of Shwedagon Pagoda"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 2,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8409,
+          "lng": 96.1735,
+          "day": 1,
+          "photoQuery": "Contemplate the beauty of Shwedagon Pagoda Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-stroll-around-kandawgyi-park",
+          "name": {
+            "en": "Stroll around Kandawgyi Park",
+            "my": "Stroll around Kandawgyi Park"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8529,
+          "lng": 96.1835,
+          "day": 1,
+          "photoQuery": "Stroll around Kandawgyi Park Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-taste-yangon-street-food",
+          "name": {
+            "en": "Taste Yangon street food",
+            "my": "Taste Yangon street food"
+          },
+          "city": "Yangon",
+          "category": "food",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8649,
+          "lng": 96.1935,
+          "day": 1,
+          "photoQuery": "Taste Yangon street food Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-go-shopping-at-bogyoke-aung-san-market-scott-market",
+          "name": {
+            "en": "Go shopping at Bogyoke Aung San market (Scott market)",
+            "my": "Go shopping at Bogyoke Aung San market (Scott market)"
+          },
+          "city": "Yangon",
+          "category": "food",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8769,
+          "lng": 96.1735,
+          "day": 1,
+          "photoQuery": "Go shopping at Bogyoke Aung San market (Scott market) Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-pay-a-visit-at-chaukhtatgyi-paya",
+          "name": {
+            "en": "Pay a visit at Chaukhtatgyi Paya",
+            "my": "Pay a visit at Chaukhtatgyi Paya"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 2,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8889,
+          "lng": 96.1835,
+          "day": 2,
+          "photoQuery": "Pay a visit at Chaukhtatgyi Paya Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-feel-the-local-life-at-a-sidewalk-tea-shop",
+          "name": {
+            "en": "Feel the local life at a sidewalk tea shop",
+            "my": "Feel the local life at a sidewalk tea shop"
+          },
+          "city": "Yangon",
+          "category": "food",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9009,
+          "lng": 96.1935,
+          "day": 2,
+          "photoQuery": "Feel the local life at a sidewalk tea shop Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-admire-the-colonial-buildings-in-downtown-yangon",
+          "name": {
+            "en": "Admire the colonial buildings in downtown Yangon",
+            "my": "Admire the colonial buildings in downtown Yangon"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9129,
+          "lng": 96.1735,
+          "day": 2,
+          "photoQuery": "Admire the colonial buildings in downtown Yangon Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-take-a-yangon-circular-train-ride",
+          "name": {
+            "en": "Take a Yangon circular train ride",
+            "my": "Take a Yangon circular train ride"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9249,
+          "lng": 96.1835,
+          "day": 2,
+          "photoQuery": "Take a Yangon circular train ride Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-drink-beer-and-enjoy-a-barbecue-at-19th-street",
+          "name": {
+            "en": "Drink beer and enjoy a barbecue at 19th street",
+            "my": "Drink beer and enjoy a barbecue at 19th street"
+          },
+          "city": "Yangon",
+          "category": "food",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9369,
+          "lng": 96.1935,
+          "day": 2,
+          "photoQuery": "Drink beer and enjoy a barbecue at 19th street Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-yangon-join-in-a-day-trip-to-dala",
+          "name": {
+            "en": "Join in a day trip to Dala",
+            "my": "Join in a day trip to Dala"
+          },
+          "city": "Yangon",
+          "category": "sight",
+          "durationHours": 6,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9489,
+          "lng": 96.1735,
+          "day": 2,
+          "photoQuery": "Join in a day trip to Dala Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-yangon",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-tour-yangon-essence-expedition",
+          "name": {
+            "en": "Yangon Essence Expedition",
+            "my": "Yangon Essence Expedition"
+          },
+          "city": "Yangon",
+          "category": "tour",
+          "durationHours": 4,
+          "tips": {
+            "en": "Yangon Full Day City Tour (8~9 hours) We will pick you up from all the Hotels which are located in Yangon Downtown. Botahtaung Pagoda Road The day starts at the",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8409,
+          "lng": 96.1735,
+          "day": 1,
+          "photoQuery": "Yangon Essence Expedition Myanmar",
+          "sourceUrl": "https://flymya.com/tour-package/yangon-essence-expedition",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "hotels": [
+        {
+          "id": "mzmall-hotel-yangon-sedona-hotel-yangon",
+          "name": {
+            "en": "Sedona Hotel Yangon",
+            "my": "Sedona Hotel Yangon"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "5-star · Bahan Township",
+            "my": "5-star · Bahan Township"
+          },
+          "priceMmkMin": 180000,
+          "priceMmkMax": 180000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8409,
+          "lng": 96.1735,
+          "photoQuery": "Sedona Hotel Yangon Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "mzmall-hotel-yangon-chatrium-hotel-royal-lake",
+          "name": {
+            "en": "Chatrium Hotel Royal Lake",
+            "my": "Chatrium Hotel Royal Lake"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "5-star · Kandawgyi Lake",
+            "my": "5-star · Kandawgyi Lake"
+          },
+          "priceMmkMin": 200000,
+          "priceMmkMax": 200000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8529,
+          "lng": 96.1835,
+          "photoQuery": "Chatrium Hotel Royal Lake Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "mzmall-hotel-yangon-myanmar-life-hotel",
+          "name": {
+            "en": "Myanmar Life Hotel",
+            "my": "Myanmar Life Hotel"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "4-star · Downtown",
+            "my": "4-star · Downtown"
+          },
+          "priceMmkMin": 70000,
+          "priceMmkMax": 70000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8649,
+          "lng": 96.1935,
+          "photoQuery": "Myanmar Life Hotel Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "mzmall-hotel-yangon-hotel-rose-hill",
+          "name": {
+            "en": "Hotel Rose Hill",
+            "my": "Hotel Rose Hill"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "3-star · Bahan",
+            "my": "3-star · Bahan"
+          },
+          "priceMmkMin": 55000,
+          "priceMmkMax": 55000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8769,
+          "lng": 96.1735,
+          "photoQuery": "Hotel Rose Hill Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "mzmall-hotel-yangon-yangon-win-hotel",
+          "name": {
+            "en": "Yangon Win Hotel",
+            "my": "Yangon Win Hotel"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "3-star · Downtown",
+            "my": "3-star · Downtown"
+          },
+          "priceMmkMin": 45000,
+          "priceMmkMax": 45000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.8889,
+          "lng": 96.1835,
+          "photoQuery": "Yangon Win Hotel Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "mzmall-hotel-yangon-hotel-g-yangon",
+          "name": {
+            "en": "Hotel G Yangon",
+            "my": "Hotel G Yangon"
+          },
+          "city": "Yangon",
+          "area": {
+            "en": "4-star · Downtown",
+            "my": "4-star · Downtown"
+          },
+          "priceMmkMin": 85000,
+          "priceMmkMax": 85000,
+          "notes": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 16.9009,
+          "lng": 96.1935,
+          "photoQuery": "Hotel G Yangon Yangon",
+          "sourceUrl": "https://mzmalltravel.com/yangon-hotels",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "buses": [],
+      "flights": []
+    },
+    "mandalay": {
+      "attractions": [],
+      "hotels": [],
+      "buses": [
+        {
+          "id": "flymya-bus-yangon-mandalay-golden-mandalay-express",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "operator": "Golden Mandalay Express",
+          "durationHours": 10.5,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Golden Mandalay Express bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-mandalay-moe-htet-arkar",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "operator": "Moe Htet Arkar",
+          "durationHours": 10,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Moe Htet Arkar bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-mandalay-lin-mandalar-express",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "operator": "Lin Mandalar Express",
+          "durationHours": 11,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Lin Mandalar Express bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-mandalay-shwe-sin-set-kyar-shwe-sin",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "operator": "Shwe Sin Set Kyar - Shwe Sin",
+          "durationHours": 12,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "18:00",
+            "my": "18:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Shwe Sin Set Kyar - Shwe Sin bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "flights": [
+        {
+          "id": "airfares-flight-yangon-mandalay-air-kbz",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "operator": "Air KBZ",
+          "durationHours": 1.5,
+          "fareMmk": 193200,
+          "departWindow": {
+            "en": "See the airline schedule",
+            "my": "လေကြောင်းအချိန်ဇယားကို ကြည့်ပါ"
+          },
+          "notes": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket. USD fare converted at 2,100 MMK.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Air KBZ flight Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/flight/search_one_way?from=117&to=119&depart_date=26-09-2026&traveller=1&class=economy&group_airline=132",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ]
+    },
+    "bagan": {
+      "attractions": [
+        {
+          "id": "mzmall-tour-bagan-2d1n-quick-tour",
+          "name": {
+            "en": "Bagan 2D1N Quick Tour",
+            "my": "Bagan 2D1N Quick Tour"
+          },
+          "city": "Bagan",
+          "category": "tour",
+          "durationHours": 8,
+          "tips": {
+            "en": "Snapshot from MZ Mall Travel on 2026-09-28. Not a live ticket.",
+            "my": "MZ Mall Travel မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.1717,
+          "lng": 94.8585,
+          "day": 1,
+          "photoQuery": "Bagan 2D1N Quick Tour Myanmar",
+          "sourceUrl": "https://mzmalltravel.com/bagan-tour-package",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-bagan-ride-the-hot-air-balloon",
+          "name": {
+            "en": "Ride the Hot-air Balloon",
+            "my": "Ride the Hot-air Balloon"
+          },
+          "city": "Bagan",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.2917,
+          "lng": 94.8685,
+          "day": 2,
+          "photoQuery": "Ride the Hot-air Balloon Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-bagan",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-bagan-explore-the-temples",
+          "name": {
+            "en": "Explore the Temples",
+            "my": "Explore the Temples"
+          },
+          "city": "Bagan",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.3037,
+          "lng": 94.8785,
+          "day": 2,
+          "photoQuery": "Explore the Temples Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-bagan",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-bagan-go-on-a-walking-tour",
+          "name": {
+            "en": "Go on a Walking Tour",
+            "my": "Go on a Walking Tour"
+          },
+          "city": "Bagan",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.3157,
+          "lng": 94.8585,
+          "day": 2,
+          "photoQuery": "Go on a Walking Tour Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-bagan",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-bagan-wandering-around-the-local-markets",
+          "name": {
+            "en": "Wandering around the local markets",
+            "my": "Wandering around the local markets"
+          },
+          "city": "Bagan",
+          "category": "food",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.3277,
+          "lng": 94.8685,
+          "day": 2,
+          "photoQuery": "Wandering around the local markets Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-bagan",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-place-bagan-visit-lacquerware-workshops",
+          "name": {
+            "en": "Visit Lacquerware Workshops",
+            "my": "Visit Lacquerware Workshops"
+          },
+          "city": "Bagan",
+          "category": "sight",
+          "durationHours": 1.5,
+          "tips": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 21.3397,
+          "lng": 94.8785,
+          "day": 2,
+          "photoQuery": "Visit Lacquerware Workshops Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/things-to-do-in-bagan",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "hotels": [],
+      "buses": [
+        {
+          "id": "flymya-bus-yangon-bagan-doe-shwe-myo-taw",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Doe Shwe Myo Taw",
+          "durationHours": 12,
+          "fareMmk": 38000,
+          "departWindow": {
+            "en": "19:00",
+            "my": "19:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Doe Shwe Myo Taw bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-bagan-araindama-express",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Araindama Express",
+          "durationHours": 13,
+          "fareMmk": 38000,
+          "departWindow": {
+            "en": "19:00",
+            "my": "19:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Araindama Express bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-bagan-shwe-sin-set-kyar-1",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Shwe Sin Set Kyar 1",
+          "durationHours": 9.5,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "18:00",
+            "my": "18:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Shwe Sin Set Kyar 1 bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-bagan-ye-thu-aung",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Ye Thu Aung",
+          "durationHours": 13,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "18:00",
+            "my": "18:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Ye Thu Aung bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-mandalay-bagan-sein-nan-soe",
+          "from": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Sein Nan Soe",
+          "durationHours": 5,
+          "fareMmk": 50000,
+          "departWindow": {
+            "en": "06:00",
+            "my": "06:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Sein Nan Soe bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "flights": [
+        {
+          "id": "airfares-flight-mandalay-bagan-golden-myanmar-airlines",
+          "from": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "to": {
+            "en": "Bagan",
+            "my": "ပုဂံ"
+          },
+          "operator": "Golden Myanmar Airlines",
+          "durationHours": 0.6,
+          "fareMmk": 58800,
+          "departWindow": {
+            "en": "See the airline schedule",
+            "my": "လေကြောင်းအချိန်ဇယားကို ကြည့်ပါ"
+          },
+          "notes": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket. USD fare converted at 2,100 MMK.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Golden Myanmar Airlines flight Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/flight/search_one_way?from=119&to=118&depart_date=26-09-2026&traveller=1&class=economy&group_airline=85",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ]
+    },
+    "inle": {
+      "attractions": [
+        {
+          "id": "flymya-tour-intriguing-inle",
+          "name": {
+            "en": "Intriguing Inle",
+            "my": "Intriguing Inle"
+          },
+          "city": "Inle Lake",
+          "category": "tour",
+          "durationHours": 4,
+          "tips": {
+            "en": "Day 1 (L / D) Upon arrival to Inle, check in to your hotel and then start your Inle Lake sightseeing tour by taking a boat tour. Throughout the tour, you will h",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "lat": 20.598,
+          "lng": 96.92,
+          "day": 1,
+          "photoQuery": "Intriguing Inle Myanmar",
+          "sourceUrl": "https://flymya.com/tour-package/intriguing-inle",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "hotels": [],
+      "buses": [
+        {
+          "id": "flymya-bus-yangon-inle-shwe-taung-yoe-express",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Shwe Taung Yoe Express",
+          "durationHours": 17,
+          "fareMmk": 45000,
+          "departWindow": {
+            "en": "19:00",
+            "my": "19:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Shwe Taung Yoe Express bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-inle-aung-thein-peik",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Aung Thein Peik",
+          "durationHours": 12,
+          "fareMmk": 50000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Aung Thein Peik bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-inle-doe-nyi-naung",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Doe Nyi Naung",
+          "durationHours": 13,
+          "fareMmk": 50000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Doe Nyi Naung bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-inle-lumbini",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Lumbini",
+          "durationHours": 14,
+          "fareMmk": 50000,
+          "departWindow": {
+            "en": "18:00",
+            "my": "18:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Lumbini bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-mandalay-inle-phyo-yadanar-aung",
+          "from": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Phyo Yadanar Aung",
+          "durationHours": 8,
+          "fareMmk": 40000,
+          "departWindow": {
+            "en": "09:00",
+            "my": "09:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Phyo Yadanar Aung bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "flights": [
+        {
+          "id": "airfares-flight-yangon-inle-mann-yadanarpon-airlines",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Mann Yadanarpon Airlines",
+          "durationHours": 1.2,
+          "fareMmk": 157500,
+          "departWindow": {
+            "en": "See the airline schedule",
+            "my": "လေကြောင်းအချိန်ဇယားကို ကြည့်ပါ"
+          },
+          "notes": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket. USD fare converted at 2,100 MMK.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Mann Yadanarpon Airlines flight Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/flight/search_one_way?from=117&to=120&depart_date=26-09-2026&traveller=1&class=economy&group_airline=300",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-flight-mandalay-inle-air-kbz",
+          "from": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Air KBZ",
+          "durationHours": 0.5,
+          "fareMmk": 102900,
+          "departWindow": {
+            "en": "See the airline schedule",
+            "my": "လေကြောင်းအချိန်ဇယားကို ကြည့်ပါ"
+          },
+          "notes": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket. USD fare converted at 2,100 MMK.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Air KBZ flight Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/flight/search_one_way?from=119&to=120&depart_date=26-09-2026&traveller=1&class=economy&group_airline=132",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "airfares-flight-mandalay-inle-myanmar-national-airlines",
+          "from": {
+            "en": "Mandalay",
+            "my": "မန္တလေး"
+          },
+          "to": {
+            "en": "Inle Lake",
+            "my": "အင်းလေး"
+          },
+          "operator": "Myanmar National Airlines",
+          "durationHours": 0.5,
+          "fareMmk": 113400,
+          "departWindow": {
+            "en": "See the airline schedule",
+            "my": "လေကြောင်းအချိန်ဇယားကို ကြည့်ပါ"
+          },
+          "notes": {
+            "en": "Snapshot from Myanmar Airfares on 2026-09-28. Not a live ticket. USD fare converted at 2,100 MMK.",
+            "my": "Myanmar Airfares မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Myanmar National Airlines flight Myanmar",
+          "sourceUrl": "https://mail.myanmarairfares.com/flight/search_one_way?from=119&to=120&depart_date=26-09-2026&traveller=1&class=economy&group_airline=87",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ]
+    },
+    "hpa-an": {
+      "attractions": [],
+      "hotels": [],
+      "buses": [
+        {
+          "id": "flymya-bus-yangon-hpa-an-shwe-myanmar",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Hpa-An",
+            "my": "ဘားအံ"
+          },
+          "operator": "Shwe Myanmar",
+          "durationHours": 7,
+          "fareMmk": 20000,
+          "departWindow": {
+            "en": "08:00",
+            "my": "08:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "Shwe Myanmar bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        },
+        {
+          "id": "flymya-bus-yangon-hpa-an-new-way",
+          "from": {
+            "en": "Yangon",
+            "my": "ရန်ကုန်"
+          },
+          "to": {
+            "en": "Hpa-An",
+            "my": "ဘားအံ"
+          },
+          "operator": "New Way",
+          "durationHours": 20,
+          "fareMmk": 20000,
+          "departWindow": {
+            "en": "15:00",
+            "my": "15:00"
+          },
+          "notes": {
+            "en": "Snapshot from Flymya on 2026-09-28. Not a live ticket.",
+            "my": "Flymya မှ 2026-09-28 ဈေးနှုန်းမှတ်တမ်းပါ။ လက်မှတ်တိုက်ရိုက်မဟုတ်ပါ။"
+          },
+          "photoQuery": "New Way bus Myanmar",
+          "sourceUrl": "https://flymya.com/en/bus",
+          "crawledAt": "2026-09-28T14:45:03.998Z"
+        }
+      ],
+      "flights": []
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { PHOTO } from "@/data/image-urls";
 import type { ChatPayload } from "@/lib/types";
 
-export type PhotoKind = "attraction" | "hotel" | "bus";
+export type PhotoKind = "attraction" | "hotel" | "bus" | "flight";
 
 const UA = "MyanmarTripPlanner/1.0 (educational MVP)";
 
@@ -9,6 +9,7 @@ const PLACEHOLDERS: Record<PhotoKind, string> = {
   attraction: PHOTO.bagan,
   hotel: PHOTO.hotel,
   bus: PHOTO.bus,
+  flight: PHOTO.mandalay,
 };
 
 const DEMO_IMAGES: Record<string, string> = {
@@ -116,7 +117,7 @@ async function withPhoto<T extends { id: string; photoQuery?: string; imageUrl?:
 }
 
 export async function attachListingPhotos(payload: ChatPayload): Promise<ChatPayload> {
-  const [attractions, hotels, buses] = await Promise.all([
+  const [attractions, hotels, buses, flights] = await Promise.all([
     Promise.all(
       payload.attractions.map((item) => withPhoto(item, "attraction", `${item.name.en} ${item.city}`)),
     ),
@@ -128,8 +129,13 @@ export async function attachListingPhotos(payload: ChatPayload): Promise<ChatPay
         withPhoto(item, "bus", `${item.operator} ${item.from.en} ${item.to.en} bus Myanmar`),
       ),
     ),
+    Promise.all(
+      (payload.flights ?? []).map((item) =>
+        withPhoto(item, "flight", `${item.operator} ${item.from.en} ${item.to.en} flight Myanmar`),
+      ),
+    ),
   ]);
-  return { ...payload, attractions, hotels, buses };
+  return { ...payload, attractions, hotels, buses, flights };
 }
 
 export function attachDemoPhotos(payload: ChatPayload): ChatPayload {
@@ -149,6 +155,11 @@ export function attachDemoPhotos(payload: ChatPayload): ChatPayload {
       ...item,
       photoQuery: item.photoQuery || `${item.operator} bus Myanmar`,
       imageUrl: item.imageUrl || placeholderPhoto("bus"),
+    })),
+    flights: (payload.flights ?? []).map((item) => ({
+      ...item,
+      photoQuery: item.photoQuery || `${item.operator} flight Myanmar`,
+      imageUrl: item.imageUrl || placeholderPhoto("flight"),
     })),
   };
 }

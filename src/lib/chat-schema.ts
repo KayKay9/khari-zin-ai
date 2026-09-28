@@ -70,6 +70,24 @@ export const chatResponseSchema = {
         required: ["id", "from", "to", "operator", "durationHours", "fareMmk", "departWindow", "photoQuery"],
       },
     },
+    flights: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          id: { type: Type.STRING },
+          from: bilingual,
+          to: bilingual,
+          operator: { type: Type.STRING },
+          durationHours: { type: Type.NUMBER },
+          fareMmk: { type: Type.NUMBER },
+          departWindow: bilingual,
+          notes: bilingual,
+          photoQuery: { type: Type.STRING },
+        },
+        required: ["id", "from", "to", "operator", "durationHours", "fareMmk", "departWindow", "photoQuery"],
+      },
+    },
     itinerary: {
       type: Type.ARRAY,
       items: {

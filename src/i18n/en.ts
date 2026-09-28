@@ -27,6 +27,8 @@ const en = {
   attractions: "Attractions",
   hotels: "Hotels",
   buses: "Buses",
+  flights: "Flights",
+  viewSource: "Source",
   emptyTrip: "Ask in chat to add places, hotels, and buses.",
   emptyChat: "Choose a start city, then a destination — or type both.",
   searching: "Looking up places…",

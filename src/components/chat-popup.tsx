@@ -8,7 +8,8 @@ import { destinations } from "@/data/destinations";
 import { bi } from "@/i18n";
 import { ListingPhoto } from "@/components/listing-photo";
 import { MapsLink } from "@/components/maps-link";
-import type { Attraction, Bus, ChatPayload, Hotel } from "@/lib/types";
+import { SourceLink } from "@/components/source-link";
+import type { Attraction, Bus, ChatPayload, Flight, Hotel } from "@/lib/types";
 import { googleMapsDirectionsUrl, googleMapsPlaceUrl } from "@/lib/maps";
 
 const STARTERS = [
@@ -19,6 +20,11 @@ const STARTERS = [
 
 function formatMmk(value: number) {
   return value.toLocaleString();
+}
+
+function formatRange(min: number, max: number) {
+  if (min === max) return formatMmk(min);
+  return `${formatMmk(min)}–${formatMmk(max)}`;
 }
 
 function CloseIcon() {
@@ -209,6 +215,7 @@ function ResultCards({ payload }: { payload: ChatPayload }) {
               payload.attractions,
               payload.hotels,
               payload.buses,
+              payload.flights ?? [],
             )
           }
           className="min-h-11 w-full rounded-full bg-maroon text-ivory"
@@ -238,6 +245,13 @@ function ResultCards({ payload }: { payload: ChatPayload }) {
           ))}
         </Rail>
       ) : null}
+      {(payload.flights?.length ?? 0) > 0 ? (
+        <Rail title={t("flights")}>
+          {(payload.flights ?? []).map((item) => (
+            <FlightCard key={item.id} item={item} locale={locale} />
+          ))}
+        </Rail>
+      ) : null}
     </div>
   );
 }
@@ -262,11 +276,12 @@ function AttractionCard({ item, locale }: { item: Attraction; locale: "en" | "my
       <p className="text-sm text-muted">
         {item.city} · {item.durationHours} {t("hours")}
       </p>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-wrap gap-1">
         <MapsLink
           className="w-full"
           href={googleMapsPlaceUrl(`${item.name.en}, ${item.city}`)}
         />
+        <SourceLink url={item.sourceUrl} />
       </div>
       <button
         type="button"
@@ -290,13 +305,14 @@ function HotelCard({ item, locale }: { item: Hotel; locale: "en" | "my" }) {
       <p className="font-semibold leading-snug">{bi(locale, item.name)}</p>
       <p className="text-sm text-muted">{bi(locale, item.area)}</p>
       <p className="text-sm">
-        {t("typicalPrice")} {formatMmk(item.priceMmkMin)}–{formatMmk(item.priceMmkMax)} {t("mmk")}
+        {t("typicalPrice")} {formatRange(item.priceMmkMin, item.priceMmkMax)} {t("mmk")}
       </p>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-wrap gap-1">
         <MapsLink
           className="w-full"
           href={googleMapsPlaceUrl(`${item.name.en}, ${item.area.en}, ${item.city}`)}
         />
+        <SourceLink url={item.sourceUrl} />
       </div>
       <button
         type="button"
@@ -328,12 +344,46 @@ function BusCard({ item, locale }: { item: Bus; locale: "en" | "my" }) {
         {item.operator} · {formatMmk(item.fareMmk)} {t("mmk")}
       </p>
       <p className="text-sm">{bi(locale, item.departWindow)}</p>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-wrap gap-1">
         <MapsLink className="w-full" href={googleMapsDirectionsUrl(item.from.en, item.to.en)} />
+        <SourceLink url={item.sourceUrl} />
       </div>
       <button
         type="button"
         onClick={() => trip.addBus(item)}
+        disabled={added}
+        className={`mt-2 min-h-11 w-full rounded-full text-sm ${added ? "bg-gold/30 text-ink" : "bg-maroon text-ivory"}`}
+      >
+        {added ? t("added") : t("addToTrip")}
+      </button>
+    </article>
+  );
+}
+
+function FlightCard({ item, locale }: { item: Flight; locale: "en" | "my" }) {
+  const { t } = useLocale();
+  const trip = useTrip();
+  const added = trip.hasItem(item.id);
+  return (
+    <article className="w-56 shrink-0 rounded-2xl bg-ivory p-3 ring-1 ring-maroon/10">
+      <ListingPhoto
+        src={item.imageUrl}
+        alt={`${bi(locale, item.from)} ${bi(locale, item.to)}`}
+        kind="flight"
+      />
+      <p className="font-semibold leading-snug">
+        {bi(locale, item.from)} → {bi(locale, item.to)}
+      </p>
+      <p className="text-sm text-muted">
+        {item.operator} · {formatMmk(item.fareMmk)} {t("mmk")}
+      </p>
+      <p className="text-sm">{bi(locale, item.departWindow)}</p>
+      <div className="mt-2">
+        <SourceLink url={item.sourceUrl} />
+      </div>
+      <button
+        type="button"
+        onClick={() => trip.addFlight(item)}
         disabled={added}
         className={`mt-2 min-h-11 w-full rounded-full text-sm ${added ? "bg-gold/30 text-ink" : "bg-maroon text-ivory"}`}
       >

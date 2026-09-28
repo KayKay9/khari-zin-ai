@@ -2,6 +2,7 @@
 
 import { ListingPhoto } from "@/components/listing-photo";
 import { MapsLink } from "@/components/maps-link";
+import { SourceLink } from "@/components/source-link";
 import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
 import { destinations } from "@/data/destinations";
@@ -12,6 +13,11 @@ import type { Attraction } from "@/lib/types";
 
 function formatMmk(value: number) {
   return value.toLocaleString();
+}
+
+function formatRange(min: number, max: number) {
+  if (min === max) return formatMmk(min);
+  return `${formatMmk(min)}–${formatMmk(max)}`;
 }
 
 function MapIcon() {
@@ -73,10 +79,14 @@ export function ItineraryPanel() {
   const { locale, t } = useLocale();
   const trip = useTrip();
   const days = groupDays(trip.attractions);
-  const empty = trip.attractions.length === 0 && trip.hotels.length === 0 && trip.buses.length === 0;
+  const empty =
+    trip.attractions.length === 0 &&
+    trip.hotels.length === 0 &&
+    trip.buses.length === 0 &&
+    trip.flights.length === 0;
   const origin = destinations.find((item) => item.slug === trip.originSlug);
   const dest = destinations.find((item) => item.slug === trip.destinationSlug);
-  const hasLodgingOrTransit = trip.hotels.length > 0 || trip.buses.length > 0;
+  const hasLodgingOrTransit = trip.hotels.length > 0 || trip.buses.length > 0 || trip.flights.length > 0;
 
   return (
     <aside
@@ -159,6 +169,7 @@ export function ItineraryPanel() {
                               compact
                               href={googleMapsPlaceUrl(`${stop.item.name.en}, ${stop.item.city}`)}
                             />
+                            <SourceLink url={stop.item.sourceUrl} />
                             <button
                               type="button"
                               onClick={() => trip.removeAttraction(stop.item.id)}
@@ -194,7 +205,7 @@ export function ItineraryPanel() {
                       <p className="font-medium leading-snug">{bi(locale, item.name)}</p>
                       <p className="text-sm text-muted">{bi(locale, item.area)}</p>
                       <p className="text-sm">
-                        {t("typicalPrice")} {formatMmk(item.priceMmkMin)}–{formatMmk(item.priceMmkMax)} {t("mmk")}
+                        {t("typicalPrice")} {formatRange(item.priceMmkMin, item.priceMmkMax)} {t("mmk")}
                       </p>
                       <div className="mt-1.5 flex flex-wrap items-center gap-1">
                         {item.lat != null && item.lng != null ? <FocusMapButton id={item.id} /> : null}
@@ -212,6 +223,7 @@ export function ItineraryPanel() {
                           compact
                           href={googleMapsPlaceUrl(`${item.name.en}, ${item.area.en}, ${item.city}`)}
                         />
+                        <SourceLink url={item.sourceUrl} />
                         <button
                           type="button"
                           onClick={() => trip.removeHotel(item.id)}
@@ -254,9 +266,52 @@ export function ItineraryPanel() {
                       </p>
                       <div className="mt-1.5 flex flex-wrap items-center gap-1">
                         <MapsLink compact href={googleMapsDirectionsUrl(item.from.en, item.to.en)} />
+                        <SourceLink url={item.sourceUrl} />
                         <button
                           type="button"
                           onClick={() => trip.removeBus(item.id)}
+                          aria-label={t("remove")}
+                          className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
+                        >
+                          <TrashIcon />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {trip.flights.length > 0 ? (
+          <section>
+            <h2 className="mb-2 text-sm font-semibold text-muted">{t("flights")}</h2>
+            <ul className="space-y-2">
+              {trip.flights.map((item) => (
+                <li key={item.id} className="overflow-hidden rounded-2xl bg-sand ring-1 ring-maroon/10">
+                  <div className="flex items-start gap-2 p-2">
+                    <ListingPhoto
+                      src={item.imageUrl}
+                      alt={`${bi(locale, item.from)} ${bi(locale, item.to)}`}
+                      kind="flight"
+                      variant="thumb"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium leading-snug">
+                        {bi(locale, item.from)} → {bi(locale, item.to)}
+                      </p>
+                      <p className="text-sm text-muted">
+                        {item.operator} · {item.durationHours} {t("hours")}
+                      </p>
+                      <p className="text-sm">
+                        {t("typicalPrice")} {formatMmk(item.fareMmk)} {t("mmk")}
+                      </p>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1">
+                        <SourceLink url={item.sourceUrl} />
+                        <button
+                          type="button"
+                          onClick={() => trip.removeFlight(item.id)}
                           aria-label={t("remove")}
                           className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-maroon ring-1 ring-maroon/20"
                         >

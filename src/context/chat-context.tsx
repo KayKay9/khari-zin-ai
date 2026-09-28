@@ -11,7 +11,7 @@ import {
 import { useLocale } from "@/context/locale-context";
 import { useTrip } from "@/context/trip-context";
 import { bi } from "@/i18n";
-import { demoPayloadForMessage } from "@/lib/fallback";
+import { payloadForMessage } from "@/lib/fallback";
 import type { ChatPayload } from "@/lib/types";
 
 export type ChatMessage = {
@@ -75,7 +75,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
           },
         ]);
       } catch {
-        const fallback = demoPayloadForMessage(message, trip.originSlug, trip.destinationSlug);
+        const fallback = payloadForMessage(message, trip.originSlug, trip.destinationSlug);
         setMessages((prev) => [
           ...prev,
           {

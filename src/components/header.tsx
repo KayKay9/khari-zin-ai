@@ -5,8 +5,8 @@ import { useTrip } from "@/context/trip-context";
 
 export function Header() {
   const { locale, setLocale, t } = useLocale();
-  const { attractions, hotels, buses } = useTrip();
-  const count = attractions.length + hotels.length + buses.length;
+  const { attractions, hotels, buses, flights } = useTrip();
+  const count = attractions.length + hotels.length + buses.length + flights.length;
 
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-center justify-between px-4 py-3 md:px-6">

@@ -9,7 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Attraction, Bus, Hotel, ItineraryDay, TripSnapshot } from "@/lib/types";
+import type { Attraction, Bus, Flight, Hotel, ItineraryDay, TripSnapshot } from "@/lib/types";
 
 const STORAGE_KEY = "myanmar-trip-v2";
 
@@ -17,6 +17,7 @@ type TripContextValue = {
   attractions: Attraction[];
   hotels: Hotel[];
   buses: Bus[];
+  flights: Flight[];
   originSlug: string | null;
   destinationSlug: string | null;
   focusId: string | null;
@@ -26,11 +27,14 @@ type TripContextValue = {
   removeHotel: (id: string) => void;
   addBus: (item: Bus) => void;
   removeBus: (id: string) => void;
+  addFlight: (item: Flight) => void;
+  removeFlight: (id: string) => void;
   applyItinerary: (
     days: ItineraryDay[],
     catalog: Attraction[],
     nextHotels?: Hotel[],
     nextBuses?: Bus[],
+    nextFlights?: Flight[],
   ) => void;
   setOriginSlug: (slug: string | null) => void;
   setDestinationSlug: (slug: string | null) => void;
@@ -44,9 +48,9 @@ const TripContext = createContext<TripContextValue | null>(null);
 
 function emptyTrip(): Pick<
   TripContextValue,
-  "attractions" | "hotels" | "buses" | "originSlug" | "destinationSlug"
+  "attractions" | "hotels" | "buses" | "flights" | "originSlug" | "destinationSlug"
 > {
-  return { attractions: [], hotels: [], buses: [], originSlug: null, destinationSlug: null };
+  return { attractions: [], hotels: [], buses: [], flights: [], originSlug: null, destinationSlug: null };
 }
 
 function loadTrip(): ReturnType<typeof emptyTrip> {
@@ -59,6 +63,7 @@ function loadTrip(): ReturnType<typeof emptyTrip> {
       attractions: parsed.attractions ?? [],
       hotels: parsed.hotels ?? [],
       buses: parsed.buses ?? [],
+      flights: parsed.flights ?? [],
       originSlug: parsed.originSlug ?? null,
       destinationSlug: parsed.destinationSlug ?? null,
     };
@@ -71,6 +76,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
   const [attractions, setAttractions] = useState<Attraction[]>([]);
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [buses, setBuses] = useState<Bus[]>([]);
+  const [flights, setFlights] = useState<Flight[]>([]);
   const [originSlug, setOriginSlug] = useState<string | null>(null);
   const [destinationSlug, setDestinationSlug] = useState<string | null>(null);
   const [focusId, setFocusId] = useState<string | null>(null);
@@ -78,9 +84,12 @@ export function TripProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const loaded = loadTrip();
+    // localStorage is only available after mount; this matches the empty server render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate stored trip once
     setAttractions(loaded.attractions);
     setHotels(loaded.hotels);
     setBuses(loaded.buses);
+    setFlights(loaded.flights);
     setOriginSlug(loaded.originSlug);
     setDestinationSlug(loaded.destinationSlug);
     setHydrated(true);
@@ -94,11 +103,12 @@ export function TripProvider({ children }: { children: ReactNode }) {
         attractions,
         hotels,
         buses,
+        flights,
         originSlug,
         destinationSlug,
       } satisfies TripSnapshot),
     );
-  }, [attractions, hotels, buses, originSlug, destinationSlug, hydrated]);
+  }, [attractions, hotels, buses, flights, originSlug, destinationSlug, hydrated]);
 
   const addAttraction = useCallback((item: Attraction) => {
     setAttractions((prev) => (prev.some((row) => row.id === item.id) ? prev : [...prev, item]));
@@ -124,8 +134,22 @@ export function TripProvider({ children }: { children: ReactNode }) {
     setBuses((prev) => prev.filter((row) => row.id !== id));
   }, []);
 
+  const addFlight = useCallback((item: Flight) => {
+    setFlights((prev) => (prev.some((row) => row.id === item.id) ? prev : [...prev, item]));
+  }, []);
+
+  const removeFlight = useCallback((id: string) => {
+    setFlights((prev) => prev.filter((row) => row.id !== id));
+  }, []);
+
   const applyItinerary = useCallback(
-    (days: ItineraryDay[], catalog: Attraction[], nextHotels: Hotel[] = [], nextBuses: Bus[] = []) => {
+    (
+      days: ItineraryDay[],
+      catalog: Attraction[],
+      nextHotels: Hotel[] = [],
+      nextBuses: Bus[] = [],
+      nextFlights: Flight[] = [],
+    ) => {
       const byId = new Map(catalog.map((item) => [item.id, item]));
       const ordered: Attraction[] = [];
       for (const day of [...days].sort((a, b) => a.day - b.day)) {
@@ -143,6 +167,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
       setAttractions(nextAttractions);
       setHotels(nextHotels);
       setBuses(nextBuses);
+      setFlights(nextFlights);
       setFocusId(null);
     },
     [],
@@ -157,13 +182,14 @@ export function TripProvider({ children }: { children: ReactNode }) {
     (id: string) =>
       attractions.some((item) => item.id === id) ||
       hotels.some((item) => item.id === id) ||
-      buses.some((item) => item.id === id),
-    [attractions, hotels, buses],
+      buses.some((item) => item.id === id) ||
+      flights.some((item) => item.id === id),
+    [attractions, hotels, buses, flights],
   );
 
   const snapshot = useMemo(
-    () => ({ attractions, hotels, buses, originSlug, destinationSlug }),
-    [attractions, hotels, buses, originSlug, destinationSlug],
+    () => ({ attractions, hotels, buses, flights, originSlug, destinationSlug }),
+    [attractions, hotels, buses, flights, originSlug, destinationSlug],
   );
 
   const value = useMemo(
@@ -171,6 +197,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
       attractions,
       hotels,
       buses,
+      flights,
       originSlug,
       destinationSlug,
       focusId,
@@ -180,6 +207,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
       removeHotel,
       addBus,
       removeBus,
+      addFlight,
+      removeFlight,
       applyItinerary,
       setOriginSlug,
       setDestinationSlug,
@@ -192,6 +221,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
       attractions,
       hotels,
       buses,
+      flights,
       originSlug,
       destinationSlug,
       focusId,
@@ -201,6 +231,8 @@ export function TripProvider({ children }: { children: ReactNode }) {
       removeHotel,
       addBus,
       removeBus,
+      addFlight,
+      removeFlight,
       applyItinerary,
       resetRoute,
       hasItem,

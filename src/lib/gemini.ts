@@ -21,6 +21,42 @@ function compactTrip(trip?: TripSnapshot) {
       from: item.from.en,
       to: item.to.en,
     })),
+    flights: (trip.flights ?? []).map((item) => ({
+      id: item.id,
+      from: item.from.en,
+      to: item.to.en,
+    })),
+  };
+}
+
+function compactCatalog(catalog: ChatPayload) {
+  return {
+    attractions: catalog.attractions.map((item) => ({
+      id: item.id,
+      name: item.name.en,
+      city: item.city,
+    })),
+    hotels: catalog.hotels.map((item) => ({
+      id: item.id,
+      name: item.name.en,
+      city: item.city,
+      priceMmkMin: item.priceMmkMin,
+      priceMmkMax: item.priceMmkMax,
+    })),
+    buses: catalog.buses.map((item) => ({
+      id: item.id,
+      from: item.from.en,
+      to: item.to.en,
+      operator: item.operator,
+      fareMmk: item.fareMmk,
+    })),
+    flights: (catalog.flights ?? []).map((item) => ({
+      id: item.id,
+      from: item.from.en,
+      to: item.to.en,
+      operator: item.operator,
+      fareMmk: item.fareMmk,
+    })),
   };
 }
 
@@ -45,6 +81,7 @@ export async function generateChatPayload(input: {
   trip?: TripSnapshot;
   originName?: string;
   destinationName?: string;
+  catalog?: ChatPayload | null;
 }): Promise<ChatPayload> {
   const apiKey = process.env.GEMINI_API_KEY?.trim();
   if (!apiKey) {
@@ -56,18 +93,24 @@ export async function generateChatPayload(input: {
       ? `The traveler STARTS in ${input.originName} and wants to GO to ${input.destinationName}. Buses must be FROM the start city TO the destination. Attractions and hotels should be mainly in the destination.`
       : "Infer start city and destination from the user message if possible.";
 
-  const prompt = `You are a travel planner for people who live in Myanmar (not foreign tourists).
-Reply in both Burmese (my) and English.
-Only suggest real, well-known places inside Myanmar.
+  const catalogLine = input.catalog
+    ? `CRAWLED CATALOG (the only listings you may mention): ${JSON.stringify(compactCatalog(input.catalog))}
+Do not invent attractions, hotels, buses, or flights. Return empty arrays for those lists.
+Write the reply yourself. If they ask for a route, fill itinerary using only attraction ids from the catalog.`
+    : `Only suggest real, well-known places inside Myanmar.
 Prices and bus times are TYPICAL ranges in MMK, not live tickets.
 Include usable map coordinates (lat/lng).
-${routeLine}
 Each attraction, hotel, and bus MUST include photoQuery: the exact English place name plus Myanmar (e.g. "Ngwe Saung Beach Myanmar", "Shwedagon Pagoda Yangon"). Never a generic word like "beach" or "temple" alone.
-Match the user's language preference: ${input.locale}.
-User message: ${input.message}
-Current trip JSON: ${JSON.stringify(compactTrip(input.trip))}
 Return attractions, hotels, and buses the user can add to a trip.
 If they ask for a route, fill itinerary with day numbers and attraction ids.`;
+
+  const prompt = `You are a travel planner for people who live in Myanmar (not foreign tourists).
+Reply in both Burmese (my) and English.
+${routeLine}
+${catalogLine}
+Match the user's language preference: ${input.locale}.
+User message: ${input.message}
+Current trip JSON: ${JSON.stringify(compactTrip(input.trip))}`;
 
   const response = await ai.models.generateContent({
     model: MODEL,
@@ -83,5 +126,6 @@ If they ask for a route, fill itinerary with day numbers and attraction ids.`;
     throw new Error("Empty Gemini response");
   }
   const parsed = JSON.parse(text) as ChatPayload;
+  if (input.catalog) return { ...parsed, demo: false };
   return attachListingPhotos({ ...parsed, demo: false });
 }
